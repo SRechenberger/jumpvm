@@ -33,10 +33,14 @@ public class LiMa extends JumpVM {
 
     private final Register stackPointer;
 
+    private final Register markPointer;
+
     public LiMa(){
         this.stackPointer = new Register("SP", "Stack Pointer", -1);
 
-        this.stack = new Stack(stackPointer);
+        this.markPointer = new Register("MP", "Mark Pointer", -1);
+
+        this.stack = new Stack(stackPointer, "Construction");
 
         this.heap = new Heap("List");
 
@@ -47,6 +51,10 @@ public class LiMa extends JumpVM {
 
     public final Register getStackPointer(){
         return stackPointer;
+    }
+
+    public final Register getMarkPointer(){
+        return markPointer;
     }
 
     public final Heap getHeap(){
